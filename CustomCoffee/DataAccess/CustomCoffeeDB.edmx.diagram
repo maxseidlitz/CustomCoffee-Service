@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="81700bcf08cf4cb19790370d3f8bcb75" Name="Diagram1">
+        <EntityTypeShape EntityType="CustomCoffeeDBModel.AllergenEntity" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomCoffeeDBModel.AuftragEntity" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomCoffeeDBModel.AutomatEntity" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomCoffeeDBModel.KategorieEntity" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomCoffeeDBModel.KreationEntity" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomCoffeeDBModel.KundeEntity" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomCoffeeDBModel.ZutatEntity" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomCoffeeDBModel.ZutatVorraeteEntity" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="CustomCoffeeDBModel.kndallAllergen1" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.kndallAllergen2" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.kndallAllergen3" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.kndallAllergen4" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.kndallAllergen5" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.aufautAutomat" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.aufkndKunde" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.aufkreKreation" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.autZutatenVorraete" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.zutkatKategorie" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.krezutBasis" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.krezutExtra1" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.krezutExtra2" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.krezutMilch" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.krezutTopping" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomCoffeeDBModel.kndzutLieblingsmilch" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -42,13 +42,19 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
@@ -87,14 +93,73 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service1.svc" />
+    <Content Include="App_Data\CustomCoffeeDB.mdf" />
+    <Content Include="App_Data\CustomCoffeeDB_log.ldf" />
+    <Content Include="DataAccess\CustomCoffeeDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CustomCoffeeDB.Context.vb</LastGenOutput>
+      <DependentUpon>CustomCoffeeDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataAccess\CustomCoffeeDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomCoffeeDB.edmx</DependentUpon>
+      <LastGenOutput>CustomCoffeeDB.vb</LastGenOutput>
+    </Content>
+    <Content Include="Service\CustomCoffeeService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service1.svc.vb">
-      <DependentUpon>Service1.svc</DependentUpon>
+    <Compile Include="DataAccess\AllergenEntity.vb">
+      <DependentUpon>CustomCoffeeDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="IService1.vb" />
+    <Compile Include="DataAccess\AuftragEntity.vb">
+      <DependentUpon>CustomCoffeeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\AutomatEntity.vb">
+      <DependentUpon>CustomCoffeeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\CustomCoffeeDB.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomCoffeeDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\CustomCoffeeDB.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomCoffeeDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\CustomCoffeeDB.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomCoffeeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\KategorieEntity.vb">
+      <DependentUpon>CustomCoffeeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\KreationEntity.vb">
+      <DependentUpon>CustomCoffeeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\KundeEntity.vb">
+      <DependentUpon>CustomCoffeeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\ZutatEntity.vb">
+      <DependentUpon>CustomCoffeeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\ZutatVorraeteEntity.vb">
+      <DependentUpon>CustomCoffeeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Allergen.vb" />
+    <Compile Include="Models\Auftrag.vb" />
+    <Compile Include="Models\Automat.vb" />
+    <Compile Include="Models\Kategorie.vb" />
+    <Compile Include="Models\Kreation.vb" />
+    <Compile Include="Models\Kunde.vb" />
+    <Compile Include="Models\Zutaten.vb" />
+    <Compile Include="Models\ZutatenVorrat.vb" />
+    <Compile Include="Service\CustomCoffeeService.svc.vb">
+      <DependentUpon>CustomCoffeeService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ICustomCoffeeService.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -120,6 +185,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\ClassDiagram1.cd" />
+    <EntityDeploy Include="DataAccess\CustomCoffeeDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CustomCoffeeDB.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataAccess\CustomCoffeeDB.edmx.diagram">
+      <DependentUpon>CustomCoffeeDB.edmx</DependentUpon>
+    </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -129,6 +202,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -137,7 +211,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

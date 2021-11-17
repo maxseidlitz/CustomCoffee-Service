@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CustomCoffee.Kreation">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAABIAAAACyAgABAAAAAAAAIQAgUEAACABAgAAABA=</HashCode>
+      <FileName>Models\Kreation.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Kunde" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CustomCoffee.Auftrag">
+    <Position X="6" Y="1" Width="1.5" />
+    <AssociationLine Name="Kreation" Type="CustomCoffee.Kreation" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="2.454" />
+        <Point X="4.5" Y="2.454" />
+        <Point X="4.5" Y="3" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAAAEAIAAAAAgAEAAAAAAAAAAAEAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Models\Auftrag.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Kreation" />
+      <Property Name="Automat" />
+      <Property Name="Kunde" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CustomCoffee.Zutat">
+    <Position X="11.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAEAAAAAAAgCAAAAAAAQAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\Zutaten.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Kategorie" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CustomCoffee.Kunde">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <AssociationLine Name="Allergen3" Type="CustomCoffee.Allergen" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.062" Y="6.141" />
+        <Point X="1.062" Y="8.343" />
+        <Point X="1.167" Y="8.343" Type="JumpStart" />
+        <Point X="1.333" Y="8.343" Type="JumpEnd" />
+        <Point X="6.5" Y="8.343" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEBAAAAFAAAAAAAQAAAABiYBwAAAgAAAAQQQAACAA=</HashCode>
+      <FileName>Models\Kunde.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Allergen1" />
+      <Property Name="Allergen2" />
+      <Property Name="Allergen3" />
+      <Property Name="Allergen4" />
+      <Property Name="Allergen5" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CustomCoffee.Automat">
+    <Position X="8.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAgQAAAAAgAAAAAAAAAAAAAAgBKAAAAAA=</HashCode>
+      <FileName>Models\Automat.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ZutatenVorraete" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="CustomCoffee.ZutatenVorrat">
+    <Position X="11.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ZutatenVorrat.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Zutat" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CustomCoffee.Allergen">
+    <Position X="6.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAgACAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Models\Allergen.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomCoffee.Kategorie">
+    <Position X="11.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACgAAABAAAAAAAAIAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Kategorie.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

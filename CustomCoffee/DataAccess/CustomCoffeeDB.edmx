@@ -1,0 +1,848 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CustomCoffeeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAllergene">
+          <Key>
+            <PropertyRef Name="allID" />
+          </Key>
+          <Property Name="allID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="allBezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAuftraege">
+          <Key>
+            <PropertyRef Name="aufID" />
+          </Key>
+          <Property Name="aufID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aufkndKunde" Type="int" Nullable="false" />
+          <Property Name="aufkreKreation" Type="int" Nullable="false" />
+          <Property Name="aufautAutomat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAutomaten">
+          <Key>
+            <PropertyRef Name="autID" />
+          </Key>
+          <Property Name="autID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="autSeriennummer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="autSoftwareversion" Type="int" Nullable="false" />
+          <Property Name="autStandort" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="autZutatenVorraete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblKategorien">
+          <Key>
+            <PropertyRef Name="katID" />
+          </Key>
+          <Property Name="katID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="katBezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblKreationen">
+          <Key>
+            <PropertyRef Name="kreID" />
+          </Key>
+          <Property Name="kreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kreBezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="krePreis" Type="money" Nullable="false" />
+          <Property Name="kreLikeAnzahl" Type="bigint" />
+          <Property Name="krezutBasis" Type="int" Nullable="false" />
+          <Property Name="krezutExtra1" Type="int" />
+          <Property Name="krezutExtra2" Type="int" />
+          <Property Name="krezutMilch" Type="int" />
+          <Property Name="krezutTopping" Type="int" />
+        </EntityType>
+        <EntityType Name="tblKunden">
+          <Key>
+            <PropertyRef Name="kndID" />
+          </Key>
+          <Property Name="kndID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kndBenutzername" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kndName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kndVorname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kndGebDatum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kndallAllergen1" Type="int" />
+          <Property Name="kndallAllergen2" Type="int" />
+          <Property Name="kndallAllergen3" Type="int" />
+          <Property Name="kndallAllergen4" Type="int" />
+          <Property Name="kndallAllergen5" Type="int" />
+          <Property Name="kndzutLieblingsmilch" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblZutaten">
+          <Key>
+            <PropertyRef Name="zutID" />
+          </Key>
+          <Property Name="zutID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zutBezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="zutkatKategorie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblZutatenVorraete">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zutvorMenge" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="aufautAutomat">
+          <End Role="tblAutomaten" Type="Self.tblAutomaten" Multiplicity="1" />
+          <End Role="tblAuftraege" Type="Self.tblAuftraege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAutomaten">
+              <PropertyRef Name="autID" />
+            </Principal>
+            <Dependent Role="tblAuftraege">
+              <PropertyRef Name="aufautAutomat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aufkndKunde">
+          <End Role="tblKunden" Type="Self.tblKunden" Multiplicity="1" />
+          <End Role="tblAuftraege" Type="Self.tblAuftraege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKunden">
+              <PropertyRef Name="kndID" />
+            </Principal>
+            <Dependent Role="tblAuftraege">
+              <PropertyRef Name="aufkndKunde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aufkreKreation">
+          <End Role="tblKreationen" Type="Self.tblKreationen" Multiplicity="1" />
+          <End Role="tblAuftraege" Type="Self.tblAuftraege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKreationen">
+              <PropertyRef Name="kreID" />
+            </Principal>
+            <Dependent Role="tblAuftraege">
+              <PropertyRef Name="aufkreKreation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="autZutatenVorraete">
+          <End Role="tblZutatenVorraete" Type="Self.tblZutatenVorraete" Multiplicity="1" />
+          <End Role="tblAutomaten" Type="Self.tblAutomaten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutatenVorraete">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblAutomaten">
+              <PropertyRef Name="autZutatenVorraete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndallAllergen1">
+          <End Role="tblAllergene" Type="Self.tblAllergene" Multiplicity="0..1" />
+          <End Role="tblKunden" Type="Self.tblKunden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAllergene">
+              <PropertyRef Name="allID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndallAllergen1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndallAllergen2">
+          <End Role="tblAllergene" Type="Self.tblAllergene" Multiplicity="0..1" />
+          <End Role="tblKunden" Type="Self.tblKunden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAllergene">
+              <PropertyRef Name="allID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndallAllergen2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndallAllergen3">
+          <End Role="tblAllergene" Type="Self.tblAllergene" Multiplicity="0..1" />
+          <End Role="tblKunden" Type="Self.tblKunden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAllergene">
+              <PropertyRef Name="allID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndallAllergen3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndallAllergen4">
+          <End Role="tblAllergene" Type="Self.tblAllergene" Multiplicity="0..1" />
+          <End Role="tblKunden" Type="Self.tblKunden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAllergene">
+              <PropertyRef Name="allID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndallAllergen4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndallAllergen5">
+          <End Role="tblAllergene" Type="Self.tblAllergene" Multiplicity="0..1" />
+          <End Role="tblKunden" Type="Self.tblKunden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAllergene">
+              <PropertyRef Name="allID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndallAllergen5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndzutLieblingsmilch">
+          <End Role="tblZutaten" Type="Self.tblZutaten" Multiplicity="1" />
+          <End Role="tblKunden" Type="Self.tblKunden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndzutLieblingsmilch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="krezutBasis">
+          <End Role="tblZutaten" Type="Self.tblZutaten" Multiplicity="1" />
+          <End Role="tblKreationen" Type="Self.tblKreationen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKreationen">
+              <PropertyRef Name="krezutBasis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="krezutExtra1">
+          <End Role="tblZutaten" Type="Self.tblZutaten" Multiplicity="0..1" />
+          <End Role="tblKreationen" Type="Self.tblKreationen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKreationen">
+              <PropertyRef Name="krezutExtra1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="krezutExtra2">
+          <End Role="tblZutaten" Type="Self.tblZutaten" Multiplicity="0..1" />
+          <End Role="tblKreationen" Type="Self.tblKreationen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKreationen">
+              <PropertyRef Name="krezutExtra1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="krezutMilch">
+          <End Role="tblZutaten" Type="Self.tblZutaten" Multiplicity="0..1" />
+          <End Role="tblKreationen" Type="Self.tblKreationen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKreationen">
+              <PropertyRef Name="krezutExtra1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="krezutTopping">
+          <End Role="tblZutaten" Type="Self.tblZutaten" Multiplicity="0..1" />
+          <End Role="tblKreationen" Type="Self.tblKreationen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKreationen">
+              <PropertyRef Name="krezutExtra1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="zutkatKategorie">
+          <End Role="tblKategorien" Type="Self.tblKategorien" Multiplicity="1" />
+          <End Role="tblZutaten" Type="Self.tblZutaten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKategorien">
+              <PropertyRef Name="katID" />
+            </Principal>
+            <Dependent Role="tblZutaten">
+              <PropertyRef Name="zutkatKategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CustomCoffeeDBModelStoreContainer">
+          <EntitySet Name="tblAllergene" EntityType="Self.tblAllergene" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAuftraege" EntityType="Self.tblAuftraege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAutomaten" EntityType="Self.tblAutomaten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKategorien" EntityType="Self.tblKategorien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKreationen" EntityType="Self.tblKreationen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKunden" EntityType="Self.tblKunden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblZutaten" EntityType="Self.tblZutaten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblZutatenVorraete" EntityType="Self.tblZutatenVorraete" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="aufautAutomat" Association="Self.aufautAutomat">
+            <End Role="tblAutomaten" EntitySet="tblAutomaten" />
+            <End Role="tblAuftraege" EntitySet="tblAuftraege" />
+          </AssociationSet>
+          <AssociationSet Name="aufkndKunde" Association="Self.aufkndKunde">
+            <End Role="tblKunden" EntitySet="tblKunden" />
+            <End Role="tblAuftraege" EntitySet="tblAuftraege" />
+          </AssociationSet>
+          <AssociationSet Name="aufkreKreation" Association="Self.aufkreKreation">
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+            <End Role="tblAuftraege" EntitySet="tblAuftraege" />
+          </AssociationSet>
+          <AssociationSet Name="autZutatenVorraete" Association="Self.autZutatenVorraete">
+            <End Role="tblZutatenVorraete" EntitySet="tblZutatenVorraete" />
+            <End Role="tblAutomaten" EntitySet="tblAutomaten" />
+          </AssociationSet>
+          <AssociationSet Name="kndallAllergen1" Association="Self.kndallAllergen1">
+            <End Role="tblAllergene" EntitySet="tblAllergene" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="kndallAllergen2" Association="Self.kndallAllergen2">
+            <End Role="tblAllergene" EntitySet="tblAllergene" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="kndallAllergen3" Association="Self.kndallAllergen3">
+            <End Role="tblAllergene" EntitySet="tblAllergene" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="kndallAllergen4" Association="Self.kndallAllergen4">
+            <End Role="tblAllergene" EntitySet="tblAllergene" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="kndallAllergen5" Association="Self.kndallAllergen5">
+            <End Role="tblAllergene" EntitySet="tblAllergene" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="kndzutLieblingsmilch" Association="Self.kndzutLieblingsmilch">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="krezutBasis" Association="Self.krezutBasis">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+          </AssociationSet>
+          <AssociationSet Name="krezutExtra1" Association="Self.krezutExtra1">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+          </AssociationSet>
+          <AssociationSet Name="krezutExtra2" Association="Self.krezutExtra2">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+          </AssociationSet>
+          <AssociationSet Name="krezutMilch" Association="Self.krezutMilch">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+          </AssociationSet>
+          <AssociationSet Name="krezutTopping" Association="Self.krezutTopping">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+          </AssociationSet>
+          <AssociationSet Name="zutkatKategorie" Association="Self.zutkatKategorie">
+            <End Role="tblKategorien" EntitySet="tblKategorien" />
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CustomCoffeeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AllergenEntity">
+          <Key>
+            <PropertyRef Name="allID" />
+          </Key>
+          <Property Name="allID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="allBezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblKunden" Relationship="Self.kndallAllergen1" FromRole="tblAllergene" ToRole="tblKunden" />
+          <NavigationProperty Name="tblKunden1" Relationship="Self.kndallAllergen2" FromRole="tblAllergene" ToRole="tblKunden" />
+          <NavigationProperty Name="tblKunden2" Relationship="Self.kndallAllergen3" FromRole="tblAllergene" ToRole="tblKunden" />
+          <NavigationProperty Name="tblKunden3" Relationship="Self.kndallAllergen4" FromRole="tblAllergene" ToRole="tblKunden" />
+          <NavigationProperty Name="tblKunden4" Relationship="Self.kndallAllergen5" FromRole="tblAllergene" ToRole="tblKunden" />
+        </EntityType>
+        <EntityType Name="AuftragEntity">
+          <Key>
+            <PropertyRef Name="aufID" />
+          </Key>
+          <Property Name="aufID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aufkndKunde" Type="Int32" Nullable="false" />
+          <Property Name="aufkreKreation" Type="Int32" Nullable="false" />
+          <Property Name="aufautAutomat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAutomaten" Relationship="Self.aufautAutomat" FromRole="tblAuftraege" ToRole="tblAutomaten" />
+          <NavigationProperty Name="tblKunden" Relationship="Self.aufkndKunde" FromRole="tblAuftraege" ToRole="tblKunden" />
+          <NavigationProperty Name="tblKreationen" Relationship="Self.aufkreKreation" FromRole="tblAuftraege" ToRole="tblKreationen" />
+        </EntityType>
+        <EntityType Name="AutomatEntity">
+          <Key>
+            <PropertyRef Name="autID" />
+          </Key>
+          <Property Name="autID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="autSeriennummer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="autSoftwareversion" Type="Int32" Nullable="false" />
+          <Property Name="autStandort" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="autZutatenVorraete" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAuftraege" Relationship="Self.aufautAutomat" FromRole="tblAutomaten" ToRole="tblAuftraege" />
+          <NavigationProperty Name="tblZutatenVorraete" Relationship="Self.autZutatenVorraete" FromRole="tblAutomaten" ToRole="tblZutatenVorraete" />
+        </EntityType>
+        <EntityType Name="KategorieEntity">
+          <Key>
+            <PropertyRef Name="katID" />
+          </Key>
+          <Property Name="katID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="katBezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblZutaten" Relationship="Self.zutkatKategorie" FromRole="tblKategorien" ToRole="tblZutaten" />
+        </EntityType>
+        <EntityType Name="KreationEntity">
+          <Key>
+            <PropertyRef Name="kreID" />
+          </Key>
+          <Property Name="kreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kreBezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="krePreis" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="kreLikeAnzahl" Type="Int64" />
+          <Property Name="krezutBasis" Type="Int32" Nullable="false" />
+          <Property Name="krezutExtra1" Type="Int32" />
+          <Property Name="krezutExtra2" Type="Int32" />
+          <Property Name="krezutMilch" Type="Int32" />
+          <Property Name="krezutTopping" Type="Int32" />
+          <NavigationProperty Name="tblAuftraege" Relationship="Self.aufkreKreation" FromRole="tblKreationen" ToRole="tblAuftraege" />
+          <NavigationProperty Name="tblZutaten" Relationship="Self.krezutBasis" FromRole="tblKreationen" ToRole="tblZutaten" />
+          <NavigationProperty Name="tblZutaten1" Relationship="Self.krezutExtra1" FromRole="tblKreationen" ToRole="tblZutaten" />
+          <NavigationProperty Name="tblZutaten2" Relationship="Self.krezutExtra2" FromRole="tblKreationen" ToRole="tblZutaten" />
+          <NavigationProperty Name="tblZutaten3" Relationship="Self.krezutMilch" FromRole="tblKreationen" ToRole="tblZutaten" />
+          <NavigationProperty Name="tblZutaten4" Relationship="Self.krezutTopping" FromRole="tblKreationen" ToRole="tblZutaten" />
+        </EntityType>
+        <EntityType Name="KundeEntity">
+          <Key>
+            <PropertyRef Name="kndID" />
+          </Key>
+          <Property Name="kndID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kndBenutzername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kndName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kndVorname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kndGebDatum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kndallAllergen1" Type="Int32" />
+          <Property Name="kndallAllergen2" Type="Int32" />
+          <Property Name="kndallAllergen3" Type="Int32" />
+          <Property Name="kndallAllergen4" Type="Int32" />
+          <Property Name="kndallAllergen5" Type="Int32" />
+          <Property Name="kndzutLieblingsmilch" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAllergene" Relationship="Self.kndallAllergen1" FromRole="tblKunden" ToRole="tblAllergene" />
+          <NavigationProperty Name="tblAllergene1" Relationship="Self.kndallAllergen2" FromRole="tblKunden" ToRole="tblAllergene" />
+          <NavigationProperty Name="tblAllergene2" Relationship="Self.kndallAllergen3" FromRole="tblKunden" ToRole="tblAllergene" />
+          <NavigationProperty Name="tblAllergene3" Relationship="Self.kndallAllergen4" FromRole="tblKunden" ToRole="tblAllergene" />
+          <NavigationProperty Name="tblAllergene4" Relationship="Self.kndallAllergen5" FromRole="tblKunden" ToRole="tblAllergene" />
+          <NavigationProperty Name="tblAuftraege" Relationship="Self.aufkndKunde" FromRole="tblKunden" ToRole="tblAuftraege" />
+          <NavigationProperty Name="tblZutaten" Relationship="Self.kndzutLieblingsmilch" FromRole="tblKunden" ToRole="tblZutaten" />
+        </EntityType>
+        <EntityType Name="ZutatEntity">
+          <Key>
+            <PropertyRef Name="zutID" />
+          </Key>
+          <Property Name="zutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zutBezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zutkatKategorie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblKategorien" Relationship="Self.zutkatKategorie" FromRole="tblZutaten" ToRole="tblKategorien" />
+          <NavigationProperty Name="tblKreationen" Relationship="Self.krezutBasis" FromRole="tblZutaten" ToRole="tblKreationen" />
+          <NavigationProperty Name="tblKreationen1" Relationship="Self.krezutExtra1" FromRole="tblZutaten" ToRole="tblKreationen" />
+          <NavigationProperty Name="tblKreationen2" Relationship="Self.krezutExtra2" FromRole="tblZutaten" ToRole="tblKreationen" />
+          <NavigationProperty Name="tblKreationen3" Relationship="Self.krezutMilch" FromRole="tblZutaten" ToRole="tblKreationen" />
+          <NavigationProperty Name="tblKreationen4" Relationship="Self.krezutTopping" FromRole="tblZutaten" ToRole="tblKreationen" />
+          <NavigationProperty Name="tblKunden" Relationship="Self.kndzutLieblingsmilch" FromRole="tblZutaten" ToRole="tblKunden" />
+        </EntityType>
+        <EntityType Name="ZutatVorraeteEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zutvorMenge" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblAutomaten" Relationship="Self.autZutatenVorraete" FromRole="tblZutatenVorraete" ToRole="tblAutomaten" />
+        </EntityType>
+        <Association Name="kndallAllergen1">
+          <End Role="tblAllergene" Type="CustomCoffeeDBModel.AllergenEntity" Multiplicity="0..1" />
+          <End Role="tblKunden" Type="CustomCoffeeDBModel.KundeEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAllergene">
+              <PropertyRef Name="allID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndallAllergen1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndallAllergen2">
+          <End Role="tblAllergene" Type="CustomCoffeeDBModel.AllergenEntity" Multiplicity="0..1" />
+          <End Role="tblKunden" Type="CustomCoffeeDBModel.KundeEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAllergene">
+              <PropertyRef Name="allID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndallAllergen2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndallAllergen3">
+          <End Role="tblAllergene" Type="CustomCoffeeDBModel.AllergenEntity" Multiplicity="0..1" />
+          <End Role="tblKunden" Type="CustomCoffeeDBModel.KundeEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAllergene">
+              <PropertyRef Name="allID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndallAllergen3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndallAllergen4">
+          <End Role="tblAllergene" Type="CustomCoffeeDBModel.AllergenEntity" Multiplicity="0..1" />
+          <End Role="tblKunden" Type="CustomCoffeeDBModel.KundeEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAllergene">
+              <PropertyRef Name="allID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndallAllergen4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndallAllergen5">
+          <End Role="tblAllergene" Type="CustomCoffeeDBModel.AllergenEntity" Multiplicity="0..1" />
+          <End Role="tblKunden" Type="CustomCoffeeDBModel.KundeEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAllergene">
+              <PropertyRef Name="allID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndallAllergen5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aufautAutomat">
+          <End Role="tblAutomaten" Type="CustomCoffeeDBModel.AutomatEntity" Multiplicity="1" />
+          <End Role="tblAuftraege" Type="CustomCoffeeDBModel.AuftragEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAutomaten">
+              <PropertyRef Name="autID" />
+            </Principal>
+            <Dependent Role="tblAuftraege">
+              <PropertyRef Name="aufautAutomat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aufkndKunde">
+          <End Role="tblKunden" Type="CustomCoffeeDBModel.KundeEntity" Multiplicity="1" />
+          <End Role="tblAuftraege" Type="CustomCoffeeDBModel.AuftragEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKunden">
+              <PropertyRef Name="kndID" />
+            </Principal>
+            <Dependent Role="tblAuftraege">
+              <PropertyRef Name="aufkndKunde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aufkreKreation">
+          <End Role="tblKreationen" Type="CustomCoffeeDBModel.KreationEntity" Multiplicity="1" />
+          <End Role="tblAuftraege" Type="CustomCoffeeDBModel.AuftragEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKreationen">
+              <PropertyRef Name="kreID" />
+            </Principal>
+            <Dependent Role="tblAuftraege">
+              <PropertyRef Name="aufkreKreation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="autZutatenVorraete">
+          <End Role="tblZutatenVorraete" Type="CustomCoffeeDBModel.ZutatVorraeteEntity" Multiplicity="1" />
+          <End Role="tblAutomaten" Type="CustomCoffeeDBModel.AutomatEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutatenVorraete">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblAutomaten">
+              <PropertyRef Name="autZutatenVorraete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="zutkatKategorie">
+          <End Role="tblKategorien" Type="CustomCoffeeDBModel.KategorieEntity" Multiplicity="1" />
+          <End Role="tblZutaten" Type="CustomCoffeeDBModel.ZutatEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKategorien">
+              <PropertyRef Name="katID" />
+            </Principal>
+            <Dependent Role="tblZutaten">
+              <PropertyRef Name="zutkatKategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="krezutBasis">
+          <End Role="tblZutaten" Type="CustomCoffeeDBModel.ZutatEntity" Multiplicity="1" />
+          <End Role="tblKreationen" Type="CustomCoffeeDBModel.KreationEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKreationen">
+              <PropertyRef Name="krezutBasis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="krezutExtra1">
+          <End Role="tblZutaten" Type="CustomCoffeeDBModel.ZutatEntity" Multiplicity="0..1" />
+          <End Role="tblKreationen" Type="CustomCoffeeDBModel.KreationEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKreationen">
+              <PropertyRef Name="krezutExtra1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="krezutExtra2">
+          <End Role="tblZutaten" Type="CustomCoffeeDBModel.ZutatEntity" Multiplicity="0..1" />
+          <End Role="tblKreationen" Type="CustomCoffeeDBModel.KreationEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKreationen">
+              <PropertyRef Name="krezutExtra1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="krezutMilch">
+          <End Role="tblZutaten" Type="CustomCoffeeDBModel.ZutatEntity" Multiplicity="0..1" />
+          <End Role="tblKreationen" Type="CustomCoffeeDBModel.KreationEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKreationen">
+              <PropertyRef Name="krezutExtra1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="krezutTopping">
+          <End Role="tblZutaten" Type="CustomCoffeeDBModel.ZutatEntity" Multiplicity="0..1" />
+          <End Role="tblKreationen" Type="CustomCoffeeDBModel.KreationEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKreationen">
+              <PropertyRef Name="krezutExtra1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kndzutLieblingsmilch">
+          <End Role="tblZutaten" Type="CustomCoffeeDBModel.ZutatEntity" Multiplicity="1" />
+          <End Role="tblKunden" Type="CustomCoffeeDBModel.KundeEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblZutaten">
+              <PropertyRef Name="zutID" />
+            </Principal>
+            <Dependent Role="tblKunden">
+              <PropertyRef Name="kndzutLieblingsmilch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CustomCoffeeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAllergene" EntityType="CustomCoffeeDBModel.AllergenEntity" />
+          <EntitySet Name="tblAuftraege" EntityType="CustomCoffeeDBModel.AuftragEntity" />
+          <EntitySet Name="tblAutomaten" EntityType="CustomCoffeeDBModel.AutomatEntity" />
+          <EntitySet Name="tblKategorien" EntityType="CustomCoffeeDBModel.KategorieEntity" />
+          <EntitySet Name="tblKreationen" EntityType="CustomCoffeeDBModel.KreationEntity" />
+          <EntitySet Name="tblKunden" EntityType="CustomCoffeeDBModel.KundeEntity" />
+          <EntitySet Name="tblZutaten" EntityType="CustomCoffeeDBModel.ZutatEntity" />
+          <EntitySet Name="tblZutatenVorraete" EntityType="CustomCoffeeDBModel.ZutatVorraeteEntity" />
+          <AssociationSet Name="kndallAllergen1" Association="Self.kndallAllergen1">
+            <End Role="tblAllergene" EntitySet="tblAllergene" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="kndallAllergen2" Association="Self.kndallAllergen2">
+            <End Role="tblAllergene" EntitySet="tblAllergene" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="kndallAllergen3" Association="Self.kndallAllergen3">
+            <End Role="tblAllergene" EntitySet="tblAllergene" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="kndallAllergen4" Association="Self.kndallAllergen4">
+            <End Role="tblAllergene" EntitySet="tblAllergene" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="kndallAllergen5" Association="Self.kndallAllergen5">
+            <End Role="tblAllergene" EntitySet="tblAllergene" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+          <AssociationSet Name="aufautAutomat" Association="Self.aufautAutomat">
+            <End Role="tblAutomaten" EntitySet="tblAutomaten" />
+            <End Role="tblAuftraege" EntitySet="tblAuftraege" />
+          </AssociationSet>
+          <AssociationSet Name="aufkndKunde" Association="Self.aufkndKunde">
+            <End Role="tblKunden" EntitySet="tblKunden" />
+            <End Role="tblAuftraege" EntitySet="tblAuftraege" />
+          </AssociationSet>
+          <AssociationSet Name="aufkreKreation" Association="Self.aufkreKreation">
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+            <End Role="tblAuftraege" EntitySet="tblAuftraege" />
+          </AssociationSet>
+          <AssociationSet Name="autZutatenVorraete" Association="Self.autZutatenVorraete">
+            <End Role="tblZutatenVorraete" EntitySet="tblZutatenVorraete" />
+            <End Role="tblAutomaten" EntitySet="tblAutomaten" />
+          </AssociationSet>
+          <AssociationSet Name="zutkatKategorie" Association="Self.zutkatKategorie">
+            <End Role="tblKategorien" EntitySet="tblKategorien" />
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+          </AssociationSet>
+          <AssociationSet Name="krezutBasis" Association="Self.krezutBasis">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+          </AssociationSet>
+          <AssociationSet Name="krezutExtra1" Association="Self.krezutExtra1">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+          </AssociationSet>
+          <AssociationSet Name="krezutExtra2" Association="Self.krezutExtra2">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+          </AssociationSet>
+          <AssociationSet Name="krezutMilch" Association="Self.krezutMilch">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+          </AssociationSet>
+          <AssociationSet Name="krezutTopping" Association="Self.krezutTopping">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKreationen" EntitySet="tblKreationen" />
+          </AssociationSet>
+          <AssociationSet Name="kndzutLieblingsmilch" Association="Self.kndzutLieblingsmilch">
+            <End Role="tblZutaten" EntitySet="tblZutaten" />
+            <End Role="tblKunden" EntitySet="tblKunden" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CustomCoffeeDBModelStoreContainer" CdmEntityContainer="CustomCoffeeDBEntities">
+          <EntitySetMapping Name="tblAllergene">
+            <EntityTypeMapping TypeName="CustomCoffeeDBModel.AllergenEntity">
+              <MappingFragment StoreEntitySet="tblAllergene">
+                <ScalarProperty Name="allID" ColumnName="allID" />
+                <ScalarProperty Name="allBezeichnung" ColumnName="allBezeichnung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAuftraege">
+            <EntityTypeMapping TypeName="CustomCoffeeDBModel.AuftragEntity">
+              <MappingFragment StoreEntitySet="tblAuftraege">
+                <ScalarProperty Name="aufID" ColumnName="aufID" />
+                <ScalarProperty Name="aufkndKunde" ColumnName="aufkndKunde" />
+                <ScalarProperty Name="aufkreKreation" ColumnName="aufkreKreation" />
+                <ScalarProperty Name="aufautAutomat" ColumnName="aufautAutomat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAutomaten">
+            <EntityTypeMapping TypeName="CustomCoffeeDBModel.AutomatEntity">
+              <MappingFragment StoreEntitySet="tblAutomaten">
+                <ScalarProperty Name="autID" ColumnName="autID" />
+                <ScalarProperty Name="autSeriennummer" ColumnName="autSeriennummer" />
+                <ScalarProperty Name="autSoftwareversion" ColumnName="autSoftwareversion" />
+                <ScalarProperty Name="autStandort" ColumnName="autStandort" />
+                <ScalarProperty Name="autZutatenVorraete" ColumnName="autZutatenVorraete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKategorien">
+            <EntityTypeMapping TypeName="CustomCoffeeDBModel.KategorieEntity">
+              <MappingFragment StoreEntitySet="tblKategorien">
+                <ScalarProperty Name="katID" ColumnName="katID" />
+                <ScalarProperty Name="katBezeichnung" ColumnName="katBezeichnung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKreationen">
+            <EntityTypeMapping TypeName="CustomCoffeeDBModel.KreationEntity">
+              <MappingFragment StoreEntitySet="tblKreationen">
+                <ScalarProperty Name="kreID" ColumnName="kreID" />
+                <ScalarProperty Name="kreBezeichnung" ColumnName="kreBezeichnung" />
+                <ScalarProperty Name="krePreis" ColumnName="krePreis" />
+                <ScalarProperty Name="kreLikeAnzahl" ColumnName="kreLikeAnzahl" />
+                <ScalarProperty Name="krezutBasis" ColumnName="krezutBasis" />
+                <ScalarProperty Name="krezutExtra1" ColumnName="krezutExtra1" />
+                <ScalarProperty Name="krezutExtra2" ColumnName="krezutExtra2" />
+                <ScalarProperty Name="krezutMilch" ColumnName="krezutMilch" />
+                <ScalarProperty Name="krezutTopping" ColumnName="krezutTopping" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKunden">
+            <EntityTypeMapping TypeName="CustomCoffeeDBModel.KundeEntity">
+              <MappingFragment StoreEntitySet="tblKunden">
+                <ScalarProperty Name="kndID" ColumnName="kndID" />
+                <ScalarProperty Name="kndBenutzername" ColumnName="kndBenutzername" />
+                <ScalarProperty Name="kndName" ColumnName="kndName" />
+                <ScalarProperty Name="kndVorname" ColumnName="kndVorname" />
+                <ScalarProperty Name="kndGebDatum" ColumnName="kndGebDatum" />
+                <ScalarProperty Name="kndallAllergen1" ColumnName="kndallAllergen1" />
+                <ScalarProperty Name="kndallAllergen2" ColumnName="kndallAllergen2" />
+                <ScalarProperty Name="kndallAllergen3" ColumnName="kndallAllergen3" />
+                <ScalarProperty Name="kndallAllergen4" ColumnName="kndallAllergen4" />
+                <ScalarProperty Name="kndallAllergen5" ColumnName="kndallAllergen5" />
+                <ScalarProperty Name="kndzutLieblingsmilch" ColumnName="kndzutLieblingsmilch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblZutaten">
+            <EntityTypeMapping TypeName="CustomCoffeeDBModel.ZutatEntity">
+              <MappingFragment StoreEntitySet="tblZutaten">
+                <ScalarProperty Name="zutID" ColumnName="zutID" />
+                <ScalarProperty Name="zutBezeichnung" ColumnName="zutBezeichnung" />
+                <ScalarProperty Name="zutkatKategorie" ColumnName="zutkatKategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblZutatenVorraete">
+            <EntityTypeMapping TypeName="CustomCoffeeDBModel.ZutatVorraeteEntity">
+              <MappingFragment StoreEntitySet="tblZutatenVorraete">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="zutvorMenge" ColumnName="zutvorMenge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
