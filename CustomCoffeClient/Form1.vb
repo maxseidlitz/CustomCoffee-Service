@@ -7,12 +7,15 @@
         'Call btnLaden()
     End Sub
 
-    ' Private Sub laden()
-    'Dim KreationenListe As List(Of CustomCoffeeService.Kreationen)
-    'Dim svc As CustomCoffeeService.ICustomCoffeeService
-    '        svc = New CustomCoffeeService.CustomCoffeeClient
-    '        KreationenListe = svc.GibMeineKreationen
-    'Me.dgvKreationen.DataSource = KreationenListe
-    'End Sub
+    Private Sub laden()
+        Dim KreationenListe As List(Of CustomCoffeeService.Kreationen)
+        Dim svc As CustomCoffeeService.ICustomCoffeeService
+        svc = New CustomCoffeeService.CustomCoffeeClient
+        KreationenListe = svc.GibMeineKreationen
+        Me.dgvKreationen.DataSource = KreationenListe
+    End Sub
 
+    Private Sub ErstelleNeueKreation()
+
+    End Sub
 End Class

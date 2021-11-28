@@ -3,7 +3,7 @@
   <Class Name="CustomCoffee.Kreation">
     <Position X="3.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAABIAAAACyAgABAAAAAAAAIQAgUEAACABAgAAABA=</HashCode>
+      <HashCode>AAiAABIAAAACyAgABAAAAAAAEIQAAUEAACABAgAAABA=</HashCode>
       <FileName>Models\Kreation.vb</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -33,7 +33,7 @@
     <Position X="11.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAEAAAAAAAgCAAAAAAAQAAAAAAAAAAAAAAAAAAABA=</HashCode>
-      <FileName>Models\Zutaten.vb</FileName>
+      <FileName>Models\Zutat.vb</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Kategorie" />
@@ -44,10 +44,8 @@
     <AssociationLine Name="Allergen3" Type="CustomCoffee.Allergen" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="1.062" Y="6.141" />
-        <Point X="1.062" Y="8.343" />
-        <Point X="1.167" Y="8.343" Type="JumpStart" />
-        <Point X="1.333" Y="8.343" Type="JumpEnd" />
-        <Point X="6.5" Y="8.343" />
+        <Point X="1.062" Y="8.843" />
+        <Point X="6.5" Y="8.843" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -83,7 +81,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="CustomCoffee.Allergen">
-    <Position X="6.5" Y="6.75" Width="1.5" />
+    <Position X="6.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAgACAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
       <FileName>Models\Allergen.vb</FileName>

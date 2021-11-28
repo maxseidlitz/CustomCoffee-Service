@@ -154,7 +154,7 @@
     <Compile Include="Models\Kategorie.vb" />
     <Compile Include="Models\Kreation.vb" />
     <Compile Include="Models\Kunde.vb" />
-    <Compile Include="Models\Zutaten.vb" />
+    <Compile Include="Models\Zutat.vb" />
     <Compile Include="Models\ZutatenVorrat.vb" />
     <Compile Include="Service\CustomCoffeeService.svc.vb">
       <DependentUpon>CustomCoffeeService.svc</DependentUpon>

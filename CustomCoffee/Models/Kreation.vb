@@ -50,8 +50,9 @@ Public Class Kreation
         mintLikeAnzahl = pKreationEntity.kreLikeAnzahl
     End Sub
 
-    Public Function gibalsEntity() As KreationEntity
+    Public Function UmwandelnInKreationEntity(pkre As Kreation) As KreationEntity
         Dim kreEntity As KreationEntity
+        kreEntity = New KreationEntity
 
         kreEntity = New KreationEntity
         kreEntity.kreID = ID
@@ -62,7 +63,9 @@ Public Class Kreation
         kreEntity.krezutMilch = Milch
         kreEntity.krezutTopping = Topping
         kreEntity.kreLikeAnzahl = LikeAnzahl
+        kreEntity.krePreis = Preis
 
+        Return kreEntity
 
     End Function
 
