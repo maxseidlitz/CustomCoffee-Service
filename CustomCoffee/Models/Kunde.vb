@@ -34,8 +34,6 @@ Public Class Kunde
     End Sub
 
 
-
-
     Public Property strBenutzername As String
         Get
             Return mstrBenutzername

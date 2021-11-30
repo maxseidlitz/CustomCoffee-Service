@@ -14,29 +14,24 @@ Public Class CustomCoffeeService
 
         kreListe = New List(Of Kreation)
 
-        For Each kreEntity In db.tblKreationen.ToList
+        For Each kreEntity In db.tblKreationen.ToList 'Lesen der Datenbank
             kre = New Kreation(kreEntity)
-            kreListe.Add(kre)
+            kreListe.Add(kre) 'Alle Bestellungen der Liste hinzufügen [Add]
         Next
 
         Return kreListe
     End Function
 
-    Function ErstelleNeueKreation(pKreation) As Kreation Implements ICustomCoffeeService.ErstelleNeueKreation
-        Dim kre As Kreation
-
-        kre = pKreation
-        Call Kreation.UmwandelnInKreationEntity(kre)
-
-        'kre = New KreationEntity
+    Function ErstelleNeueKreation(pintBasis As Integer, pintExtra1 As Integer, pintExtra2 As Integer, pintMilch As Integer, pintTopping As Integer) As Kreation Implements ICustomCoffeeService.ErstelleNeueKreation
+        Throw New NotImplementedException()
 
     End Function
 
-    Public Function GibKunde() As List(Of Kunde) Implements ICustomCoffeeService.GibKunde
+    Public Function GibKunde(pstrBenutzername As Kunde) As List(Of Kunde) Implements ICustomCoffeeService.GibKunde
         Throw New NotImplementedException()
     End Function
 
-    Public Function GibKreation() As Kreation Implements ICustomCoffeeService.GibKreation
+    Public Function GibKreation(pintID As Integer) As Kreation Implements ICustomCoffeeService.GibKreation
         Throw New NotImplementedException()
     End Function
 
@@ -47,5 +42,11 @@ Public Class CustomCoffeeService
     Public Function BerechneEntfernung() As Integer Implements ICustomCoffeeService.BerechneEntfernung
         Throw New NotImplementedException()
     End Function
+
+    Public Function BestelleKreation(pKreation As Kreation) As Auftrag Implements ICustomCoffeeService.BestelleKreation
+        Throw New NotImplementedException()
+    End Function
+
+
 
 End Class
