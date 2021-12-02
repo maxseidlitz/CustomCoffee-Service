@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CustomCoffeeService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:52352/Service/CustomCoffeeService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:52352/Service/CustomCoffeeService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:52352/Service/CustomCoffeeService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CustomCoffee" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICustomCoffeeService_GibKunde_InputMessage">
+    <wsdl:part name="parameters" element="tns:GibKunde" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_GibKunde_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GibKundeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_GibMeineKreationen_InputMessage">
+    <wsdl:part name="parameters" element="tns:GibMeineKreationen" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_GibMeineKreationen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GibMeineKreationenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_GibKreation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GibKreation" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_GibKreation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GibKreationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_ErstelleNeueKreation_InputMessage">
+    <wsdl:part name="parameters" element="tns:ErstelleNeueKreation" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_ErstelleNeueKreation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ErstelleNeueKreationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_ladeAlleZutaten_InputMessage">
+    <wsdl:part name="parameters" element="tns:ladeAlleZutaten" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_ladeAlleZutaten_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ladeAlleZutatenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_BerechneEntfernung_InputMessage">
+    <wsdl:part name="parameters" element="tns:BerechneEntfernung" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_BerechneEntfernung_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BerechneEntfernungResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_BestelleKreation_InputMessage">
+    <wsdl:part name="parameters" element="tns:BestelleKreation" />
+  </wsdl:message>
+  <wsdl:message name="ICustomCoffeeService_BestelleKreation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BestelleKreationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICustomCoffeeService">
+    <wsdl:operation name="GibKunde">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomCoffeeService/GibKunde" message="tns:ICustomCoffeeService_GibKunde_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomCoffeeService/GibKundeResponse" message="tns:ICustomCoffeeService_GibKunde_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GibMeineKreationen">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomCoffeeService/GibMeineKreationen" message="tns:ICustomCoffeeService_GibMeineKreationen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomCoffeeService/GibMeineKreationenResponse" message="tns:ICustomCoffeeService_GibMeineKreationen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GibKreation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomCoffeeService/GibKreation" message="tns:ICustomCoffeeService_GibKreation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomCoffeeService/GibKreationResponse" message="tns:ICustomCoffeeService_GibKreation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ErstelleNeueKreation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomCoffeeService/ErstelleNeueKreation" message="tns:ICustomCoffeeService_ErstelleNeueKreation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomCoffeeService/ErstelleNeueKreationResponse" message="tns:ICustomCoffeeService_ErstelleNeueKreation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ladeAlleZutaten">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomCoffeeService/ladeAlleZutaten" message="tns:ICustomCoffeeService_ladeAlleZutaten_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomCoffeeService/ladeAlleZutatenResponse" message="tns:ICustomCoffeeService_ladeAlleZutaten_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BerechneEntfernung">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomCoffeeService/BerechneEntfernung" message="tns:ICustomCoffeeService_BerechneEntfernung_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomCoffeeService/BerechneEntfernungResponse" message="tns:ICustomCoffeeService_BerechneEntfernung_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BestelleKreation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomCoffeeService/BestelleKreation" message="tns:ICustomCoffeeService_BestelleKreation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomCoffeeService/BestelleKreationResponse" message="tns:ICustomCoffeeService_BestelleKreation_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICustomCoffeeService" type="tns:ICustomCoffeeService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GibKunde">
+      <soap:operation soapAction="http://tempuri.org/ICustomCoffeeService/GibKunde" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GibMeineKreationen">
+      <soap:operation soapAction="http://tempuri.org/ICustomCoffeeService/GibMeineKreationen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GibKreation">
+      <soap:operation soapAction="http://tempuri.org/ICustomCoffeeService/GibKreation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ErstelleNeueKreation">
+      <soap:operation soapAction="http://tempuri.org/ICustomCoffeeService/ErstelleNeueKreation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ladeAlleZutaten">
+      <soap:operation soapAction="http://tempuri.org/ICustomCoffeeService/ladeAlleZutaten" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BerechneEntfernung">
+      <soap:operation soapAction="http://tempuri.org/ICustomCoffeeService/BerechneEntfernung" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BestelleKreation">
+      <soap:operation soapAction="http://tempuri.org/ICustomCoffeeService/BestelleKreation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomCoffeeService">
+    <wsdl:port name="BasicHttpBinding_ICustomCoffeeService" binding="tns:BasicHttpBinding_ICustomCoffeeService">
+      <soap:address location="http://localhost:52352/Service/CustomCoffeeService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

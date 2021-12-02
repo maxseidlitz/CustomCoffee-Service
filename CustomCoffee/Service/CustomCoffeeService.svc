@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="VB" Debug="true" Service="CustomCoffee.Service1" CodeBehind="CustomCoffeeService.svc.vb" %>
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="CustomCoffee.CustomCoffeeService" CodeBehind="CustomCoffeeService.svc.vb" %>

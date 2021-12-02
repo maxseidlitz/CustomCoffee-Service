@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="946f78bf-23da-44e6-897d-4337ed7d5abd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52352/Service/CustomCoffeeService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CustomCoffeeService.disco" MetadataType="Disco" ID="9908f1d9-4b10-4899-a434-d587f17089f1" SourceId="1" SourceUrl="http://localhost:52352/Service/CustomCoffeeService.svc?disco" />
+    <MetadataFile FileName="CustomCoffeeService.xsd" MetadataType="Schema" ID="1183cb34-2db2-44fc-ae02-f3ae6c5c8c4f" SourceId="1" SourceUrl="http://localhost:52352/Service/CustomCoffeeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CustomCoffeeService1.xsd" MetadataType="Schema" ID="9b684de3-b0d8-4c5b-899e-7fbb762e04f9" SourceId="1" SourceUrl="http://localhost:52352/Service/CustomCoffeeService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CustomCoffeeService2.xsd" MetadataType="Schema" ID="8ce8c8a9-6f53-40f6-a280-e5b60814f016" SourceId="1" SourceUrl="http://localhost:52352/Service/CustomCoffeeService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CustomCoffeeService.wsdl" MetadataType="Wsdl" ID="bd5ffb3f-4ccf-4d92-8b34-ff8c821f8c46" SourceId="1" SourceUrl="http://localhost:52352/Service/CustomCoffeeService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

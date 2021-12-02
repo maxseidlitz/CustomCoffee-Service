@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CustomCoffee" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CustomCoffee" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Kunde">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Allergen1" nillable="true" type="tns:Allergen" />
+      <xs:element minOccurs="0" name="Allergen2" nillable="true" type="tns:Allergen" />
+      <xs:element minOccurs="0" name="Allergen3" nillable="true" type="tns:Allergen" />
+      <xs:element minOccurs="0" name="Allergen4" nillable="true" type="tns:Allergen" />
+      <xs:element minOccurs="0" name="Allergen5" nillable="true" type="tns:Allergen" />
+      <xs:element minOccurs="0" name="Auftraege" nillable="true" type="tns:ArrayOfAuftrag" />
+      <xs:element minOccurs="0" name="Lieblingsmilch" nillable="true" type="tns:Zutat" />
+      <xs:element minOccurs="0" name="datGebDat" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="strBenutzername" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strVorname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Kunde" nillable="true" type="tns:Kunde" />
+  <xs:complexType name="Allergen">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="intID" type="xs:int" />
+      <xs:element minOccurs="0" name="strBezeichnung" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Allergen" nillable="true" type="tns:Allergen" />
+  <xs:complexType name="ArrayOfAuftrag">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Auftrag" nillable="true" type="tns:Auftrag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuftrag" nillable="true" type="tns:ArrayOfAuftrag" />
+  <xs:complexType name="Auftrag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Automat" nillable="true" type="tns:Automat" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kreation" nillable="true" type="tns:Kreation" />
+      <xs:element minOccurs="0" name="Kunde" nillable="true" type="tns:Kunde" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Auftrag" nillable="true" type="tns:Auftrag" />
+  <xs:complexType name="Automat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Seriennummer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Softwareversion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Standort" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZutatenVorraete" nillable="true" type="tns:ArrayOfZutatenVorrat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Automat" nillable="true" type="tns:Automat" />
+  <xs:complexType name="ArrayOfZutatenVorrat">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZutatenVorrat" nillable="true" type="tns:ZutatenVorrat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZutatenVorrat" nillable="true" type="tns:ArrayOfZutatenVorrat" />
+  <xs:complexType name="ZutatenVorrat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Menge" type="xs:int" />
+      <xs:element minOccurs="0" name="Zutat" nillable="true" type="tns:Zutat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZutatenVorrat" nillable="true" type="tns:ZutatenVorrat" />
+  <xs:complexType name="Zutat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bezeichnung" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kategorie" nillable="true" type="tns:Kategorie" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Zutat" nillable="true" type="tns:Zutat" />
+  <xs:complexType name="Kategorie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Basis" type="xs:int" />
+      <xs:element minOccurs="0" name="Extra1" type="xs:int" />
+      <xs:element minOccurs="0" name="Extra2" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Milch" type="xs:int" />
+      <xs:element minOccurs="0" name="Toppping" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Kategorie" nillable="true" type="tns:Kategorie" />
+  <xs:complexType name="Kreation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Basis" nillable="true" type="tns:Zutat" />
+      <xs:element minOccurs="0" name="Bezeichnung" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Extra1" nillable="true" type="tns:Zutat" />
+      <xs:element minOccurs="0" name="Extra2" nillable="true" type="tns:Zutat" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kunde" nillable="true" type="tns:Kunde" />
+      <xs:element minOccurs="0" name="LikeAnzahl" type="xs:int" />
+      <xs:element minOccurs="0" name="Milch" nillable="true" type="tns:Zutat" />
+      <xs:element minOccurs="0" name="Preis" type="xs:double" />
+      <xs:element minOccurs="0" name="Topping" nillable="true" type="tns:Zutat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Kreation" nillable="true" type="tns:Kreation" />
+  <xs:complexType name="ArrayOfKunde">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Kunde" nillable="true" type="tns:Kunde" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKunde" nillable="true" type="tns:ArrayOfKunde" />
+  <xs:complexType name="ArrayOfKreation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Kreation" nillable="true" type="tns:Kreation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKreation" nillable="true" type="tns:ArrayOfKreation" />
+  <xs:complexType name="ArrayOfZutat">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Zutat" nillable="true" type="tns:Zutat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZutat" nillable="true" type="tns:ArrayOfZutat" />
+</xs:schema>

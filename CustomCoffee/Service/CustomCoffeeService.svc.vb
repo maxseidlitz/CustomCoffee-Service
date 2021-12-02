@@ -7,6 +7,10 @@ Public Class CustomCoffeeService
     'DB implementieren
     Private db As CustomCoffeeDBEntities = New CustomCoffeeDBEntities
 
+
+
+
+    '''_________________________________________________________________________________________________________________
     Function GibMeineKreationen() As List(Of Kreation) Implements ICustomCoffeeService.GibMeineKreationen
         Dim kreListe As List(Of Kreation)
         Dim kre As Kreation
@@ -21,6 +25,9 @@ Public Class CustomCoffeeService
 
         Return kreListe
     End Function
+    '''_________________________________________________________________________________________________________________!
+
+
 
     Function ErstelleNeueKreation(pintBasis As Integer, pintExtra1 As Integer, pintExtra2 As Integer, pintMilch As Integer, pintTopping As Integer) As Kreation Implements ICustomCoffeeService.ErstelleNeueKreation
         Throw New NotImplementedException()
