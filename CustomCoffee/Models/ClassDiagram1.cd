@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="CustomCoffee.Kreation">
-    <Position X="3.75" Y="3" Width="1.5" />
+    <Position X="3.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAiAABIAAAACyAgABAAAAAAAEIQAAUEAACABAgAAABA=</HashCode>
       <FileName>Models\Kreation.vb</FileName>
@@ -14,13 +14,13 @@
     <Position X="6" Y="1" Width="1.5" />
     <AssociationLine Name="Kreation" Type="CustomCoffee.Kreation" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="6" Y="2.454" />
-        <Point X="4.5" Y="2.454" />
-        <Point X="4.5" Y="3" />
+        <Point X="6" Y="2.555" />
+        <Point X="4.5" Y="2.555" />
+        <Point X="4.5" Y="2.75" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>IAAAEAIAAAAAgAEAAAAAAAAAAAEAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>IAAAEAIAAAAAgAEAAAAAAAAAAAEAAAAAACAAAAABEAA=</HashCode>
       <FileName>Models\Auftrag.vb</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -30,7 +30,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="CustomCoffee.Zutat">
-    <Position X="11.5" Y="4" Width="1.5" />
+    <Position X="11.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAEAAAAAAAgCAAAAAAAQAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\Zutat.vb</FileName>

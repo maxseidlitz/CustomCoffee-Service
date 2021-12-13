@@ -8,6 +8,7 @@ Public Class Auftrag
     Private mKreation As Kreation
     Private mBenutzername As String
     Private mAutomat As Automat
+    Private mAbholzeit As Date
 
     'parameterloser Konstruktor
     Public Sub New()
@@ -49,6 +50,14 @@ Public Class Auftrag
             Return Nothing
         End Get
         Set(value As Kunde)
+        End Set
+    End Property
+
+    Public Property Abholzeit As Date
+        Get
+            Return mAbholzeit
+        End Get
+        Set(value As Date)
         End Set
     End Property
 End Class
