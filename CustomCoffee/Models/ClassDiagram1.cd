@@ -1,13 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="CustomCoffee.Kreation">
-    <Position X="3.75" Y="2.75" Width="1.5" />
+    <Position X="3.75" Y="2.25" Width="1.5" />
+    <AssociationLine Name="Extra1" Type="CustomCoffee.Zutat" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="4.875" />
+        <Point X="11.5" Y="4.875" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Extra2" Type="CustomCoffee.Zutat" FixedFromPoint="true">
+      <Path>
+        <Point X="5.25" Y="5.125" />
+        <Point X="11.5" Y="5.125" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Milch" Type="CustomCoffee.Zutat" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="5.75" />
+        <Point X="11.5" Y="5.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Topping" Type="CustomCoffee.Zutat" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="4.563" />
+        <Point X="11.5" Y="4.563" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Basis" Type="CustomCoffee.Zutat" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="5.438" />
+        <Point X="11.5" Y="5.438" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAiAABIAAAACyAgABAAAAAAAEIQAAUEAACABAgAAABA=</HashCode>
       <FileName>Models\Kreation.vb</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Kunde" />
+      <Property Name="Extra1" />
+      <Property Name="Extra2" />
+      <Property Name="Milch" />
+      <Property Name="Topping" />
+      <Property Name="Basis" />
     </ShowAsAssociation>
   </Class>
   <Class Name="CustomCoffee.Auftrag">
@@ -15,8 +50,8 @@
     <AssociationLine Name="Kreation" Type="CustomCoffee.Kreation" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="6" Y="2.555" />
-        <Point X="4.5" Y="2.555" />
-        <Point X="4.5" Y="2.75" />
+        <Point X="5.25" Y="2.555" />
+        <Point X="5.25" Y="2.625" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -44,8 +79,8 @@
     <AssociationLine Name="Allergen3" Type="CustomCoffee.Allergen" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="1.062" Y="6.141" />
-        <Point X="1.062" Y="8.843" />
-        <Point X="6.5" Y="8.843" />
+        <Point X="1.062" Y="8.343" />
+        <Point X="6.5" Y="8.343" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -81,14 +116,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="CustomCoffee.Allergen">
-    <Position X="6.5" Y="7.25" Width="1.5" />
+    <Position X="6.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAgACAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
       <FileName>Models\Allergen.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CustomCoffee.Kategorie">
-    <Position X="11.5" Y="7" Width="1.5" />
+    <Position X="11.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACgAAABAAAAAAAAIAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Models\Kategorie.vb</FileName>
